@@ -17,7 +17,7 @@ class front_end:
         name_inp.grid(row=1,column=1)
 
         combo=ttk.Combobox(self.root,width=26,textvariable=self.selection)
-        combo["values"]=sorted(("JAC-Delhi","JOSSA","IP University","UPSEE"))
+        combo["values"]=sorted(("JAC-Delhi","JOSSA","IP University","UPSEE","CSAB"))
         combo.grid(row=2,column=1)
 
         #Button
