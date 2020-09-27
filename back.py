@@ -13,8 +13,10 @@ def check_sql():
     conn=sql.connect('coll_sql.db')
     c=conn.cursor()
     c.execute("SELECT 'coll_Web' FROM 'collist1' ")
+    sql_data=c.fetchall()
     conn.commit()
     conn.close()
+    return sql_data
     
 
 
