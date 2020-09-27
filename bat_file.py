@@ -12,8 +12,10 @@ class scraping:
     def same_sites(self,data):
         site=urllib.request.urlopen(data[1])
         soup=BeautifulSoup(site,'html.parser')
-        anchor=soup('a',href='#')
-        print(anchor.text)
+        anchors=soup('a',href='#')
+        for anchor in anchors:
+            back.matching(data[0],anchor.text)
+            # print('bat text: '+anchor.text.strip())
 
 s=scraping()
 s.scrap()

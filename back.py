@@ -1,10 +1,13 @@
 import json
 import sqlite3 as sql
+from win10toast import ToastNotifier
 def check_json():
     with open("coll_data.json") as c:
-        data=json.loads(c)
+        data=json.load(c)
         return data
-
+def write_json(json_file):
+    with open('coll_data.json','w') as c:
+        json.dump(json_file,c,indent=2)
 def check_sql():
     # with open('coll_sql.db') as c:
     #     s=c.cursor()
@@ -35,7 +38,11 @@ def write_sql(counselling):
 def matching(site_name,text):
     json_data=check_json()
     if text not in json_data[site_name]:
-        pass
+        notifier=ToastNotifier()
+        json_data[site_name].append(text)
+        write_json(json_data)
+        notifier.show_toast(title=site_name+'Update',msg=text,duration=10)
+        
 
 
      
