@@ -1,6 +1,7 @@
 import back
 from bs4 import BeautifulSoup
 import urllib.error,urllib.request,urllib.parse
+import concurrent.futures
 
 class scraping:
     def __init__(self):
@@ -23,10 +24,11 @@ class scraping:
         soup=BeautifulSoup(site,'html.parser')
         font_tag=soup('font',size='+1')
         anchors=font_tag[0].find_all('a')
-        print(data[0])
         for anchor in anchors:
             back.matching(data[0],anchor.text)
 
 
 s=scraping()
-s.scrap()
+with concurrent.futures.ThreadPoolExecutor() as executor:
+    threads=executor.submit(s.scrap)
+
