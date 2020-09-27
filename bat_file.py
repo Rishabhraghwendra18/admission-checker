@@ -9,6 +9,8 @@ class scraping:
         for s_data in self.sql_data:
             if s_data[0]=='JAC-Delhi'or s_data[0]=='JOSSA':
                 self.same_sites(s_data)
+            else:
+                self.diff_sites(s_data)
     def same_sites(self,data):
         site=urllib.request.urlopen(data[1])
         soup=BeautifulSoup(site,'html.parser')
@@ -16,6 +18,15 @@ class scraping:
         for anchor in anchors:
             back.matching(data[0],anchor.text)
             # print('bat text: '+anchor.text.strip())
+    def diff_sites(self,data):
+        site=urllib.request.urlopen(data[1])
+        soup=BeautifulSoup(site,'html.parser')
+        font_tag=soup('font',size='+1')
+        anchors=font_tag[0].find_all('a')
+        print(data[0])
+        for anchor in anchors:
+            back.matching(data[0],anchor.text)
+
 
 s=scraping()
 s.scrap()

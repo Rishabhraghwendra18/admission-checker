@@ -27,7 +27,7 @@ def write_sql(counselling):
     elif counselling=='JOSSA':
         website='https://jacdelhi.nic.in/WebInfo/Page/Page?PageId=1&LangId=P'
     else:
-        website='https://jacdelhi.nic.in/WebInfo/Page/Page?PageId=1&LangId=P'
+        website='http://www.ipu.ac.in'
     conn=sql.connect('coll_sql.db')
     c=conn.cursor()
     c.execute("INSERT INTO collist1 VALUES (:name,:web)",{'name':counselling,'web':website})
