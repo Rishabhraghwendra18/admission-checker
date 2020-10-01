@@ -31,6 +31,7 @@ def write_sql(counselling):
     conn=sql.connect('coll_sql.db')
     c=conn.cursor()
     c.execute("INSERT INTO collist1 VALUES (:name,:web)",{'name':counselling,'web':website})
+    #deleting testing data
     # c.execute("DELETE FROM collist1")
     conn.commit()
     conn.close()           
