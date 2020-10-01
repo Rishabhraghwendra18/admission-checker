@@ -27,7 +27,7 @@ def write_sql(counselling):
     elif counselling=='JOSSA':
         website='https://jacdelhi.nic.in/WebInfo/Page/Page?PageId=1&LangId=P'
     else:
-        website='http://www.ipu.ac.in'
+        website='https://ipu.admissions.nic.in/IpuAdmiss/page/Page?PageId=1&LangId=P'
     conn=sql.connect('coll_sql.db')
     c=conn.cursor()
     c.execute("INSERT INTO collist1 VALUES (:name,:web)",{'name':counselling,'web':website})
@@ -41,7 +41,7 @@ def matching(site_name,text):
         notifier=ToastNotifier()
         json_data[site_name].append(text)
         write_json(json_data)
-        notifier.show_toast(title=site_name+'Update',msg=text,duration=10)
+        notifier.show_toast(title=site_name+' Update',msg=text +'registration on '+ site_name,duration=7)
         
 
 
